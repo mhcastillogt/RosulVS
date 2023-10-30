@@ -12,15 +12,17 @@ namespace wsTipoCambio
         static void Main(string[] args)
         {
             wsBanguat.TipoCambio ws = new wsBanguat.TipoCambio();
-            var TasaCambio = ws.TipoCambioDia();
 
+
+            Console.WriteLine("Ingrese Fecha Tasa de Cambio: ");
+            string Fecha = Console.ReadLine();
+            var TasaCambio = ws.TipoCambioFechaInicial(Fecha);
             Console.WriteLine("Ingrese el Monto en Dolares: ");
             float Monto = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat);
-            Console.WriteLine("Tasa de Cambio: " + TasaCambio.CambioDolar.First().referencia);
-            Console.WriteLine("Total en Quetzales: " + (TasaCambio.CambioDolar.First().referencia *Monto)) ;
-            Console.ReadLine();
-            
-
+            Console.WriteLine("Tasa de Cambio: " + TasaCambio.Vars.First().venta);
+            Console.WriteLine("Total en Quetzales: " + (TasaCambio.Vars.First().venta * Monto)) ;
+            Console.WriteLine("Presione Enter para Salir");
+            Console.ReadLine();            
         }
     }
 }
